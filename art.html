@@ -1,444 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>art stuff like i guess bro</title>
-<link rel="stylesheet" href="style.css">
-<style>
-.art-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 20px 0 32px;
-}
-
-.filter-btn {
-  font-family: 'Inconsolata', monospace;
-  font-size: 12px;
-  letter-spacing: 0.07em;
-  border: 1.5px solid var(--ink);
-  background: var(--paper);
-  color: var(--ink);
-  padding: 3px 10px;
-  cursor: pointer;
-  text-transform: lowercase;
-}
-
-.filter-btn:hover {
-  background: var(--lime);
-}
-
-.filter-btn.active {
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.art-grid {
-  columns: 3;
-  column-gap: 12px;
-  margin: 0 0 60px;
-}
-
-@media (max-width: 700px) {
-  .art-grid { columns: 2; }
-}
-
-@media (max-width: 420px) {
-  .art-grid { columns: 1; }
-}
-
-.art-item {
-  break-inside: avoid;
-  margin-bottom: 12px;
-  border: 1.5px solid var(--ink);
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
-}
-
-.art-item img {
-  display: block;
-  width: 100%;
-  transition: opacity 0.15s;
-}
-
-.art-item:hover img {
-  opacity: 0.85;
-}
-
-.art-item-meta {
-  padding: 6px 8px 8px;
-  border-top: 1.5px solid var(--ink);
-  background: var(--paper);
-}
-
-.art-item-title {
-  font-family: 'IM Fell English', serif;
-  font-size: 14px;
-  display: block;
-}
-
-.art-item-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 4px;
-}
-
-.art-item[data-hidden] {
-  display: none;
-}
-
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  background: rgba(17,17,17,0.92);
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.lightbox.open {
-  display: flex;
-}
-
-.lightbox-img-wrap {
-  position: relative;
-  max-width: 90vw;
-  max-height: 82vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.lightbox-img-wrap img {
-  max-width: 90vw;
-  max-height: 82vh;
-  object-fit: contain;
-  border: 2px solid var(--paper);
-  display: block;
-}
-
-.lightbox-meta {
-  margin-top: 12px;
-  color: var(--paper);
-  font-family: 'Inconsolata', monospace;
-  font-size: 13px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.lightbox-title {
-  font-family: 'IM Fell English', serif;
-  font-size: 20px;
-  font-style: italic;
-}
-
-.lightbox-year {
-  color: var(--lime);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-}
-
-.lightbox-btn {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: 2px solid var(--paper);
-  color: var(--paper);
-  font-family: 'Inconsolata', monospace;
-  font-size: 20px;
-  padding: 8px 14px;
-  cursor: pointer;
-  z-index: 210;
-  line-height: 1;
-}
-
-.lightbox-btn:hover {
-  background: var(--lime);
-  color: var(--ink);
-  border-color: var(--lime);
-}
-
-.lightbox-prev { left: 16px; }
-.lightbox-next { right: 16px; }
-
-.lightbox-close {
-  position: fixed;
-  top: 16px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: var(--paper);
-  font-family: 'Inconsolata', monospace;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 210;
-  line-height: 1;
-  padding: 4px 8px;
-}
-
-.lightbox-close:hover {
-  color: var(--lime);
-}
-
-.lightbox-counter {
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 0.1em;
-}
-</style>
-</head>
-<body>
-
-<nav class="site-nav">
-  <a href="index.html" class="nav-title">lace.moe</a>
-  <a href="index.html">main</a>
-  <a href="about.html">about</a>
-  <a href="interests.html">interests</a>
-  <a href="rambling.html">rambling</a>
-  <a href="art.html" class="current">art</a>
-  <a href="links.html">links</a>
-</nav>
-
-<div class="page-body">
-
-  <header class="page-head">
-    <span class="stamp accent">file no. 005</span>
-    <h1>art</h1>
-    <p class="hand">drawings and things i made!! click to make big :3</p>
-  </header>
-
-  <div class="lime-bar"></div>
-
-  <div class="art-filters">
-    <button class="filter-btn active" data-filter="all">all</button>
-    <button class="filter-btn" data-filter="2026">2026</button>
-  </div>
-
-  <div class="art-grid" id="artGrid">
-
-    <div class="art-item" data-year="2026" data-title="lish and leisi maid art" data-index="0">
-      <img src="art/licemaids.png">
-      <div class="art-item-meta">
-        <span class="art-item-title">lish and leisi maid art</span>
-        <div class="art-item-tags">
-          <span class="tag">2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="art-item" data-year="2026" data-title="lish and leisi heart" data-index="1">
-      <img src="art/liceheart.png">
-      <div class="art-item-meta">
-        <span class="art-item-title">lish and leisi heart</span>
-        <div class="art-item-tags">
-          <span class="tag">2026</span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="art-item" data-year="2026" data-title="lish stretch" data-index="1">
-      <img src="art/lishstretch.png">
-      <div class="art-item-meta">
-        <span class="art-item-title">lish stretch</span>
-        <div class="art-item-tags">
-          <span class="tag">2026</span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="art-item" data-year="2026" data-title="lish tummy" data-index="1">
-      <img src="art/lishtummy.png">
-      <div class="art-item-meta">
-        <span class="art-item-title">lish tummy</span>
-        <div class="art-item-tags">
-          <span class="tag">2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="art-item" data-year="2026" data-title="lish and leisi dance" data-index="2">
-      <img src="art/licedance.png">
-      <div class="art-item-meta">
-        <span class="art-item-title">lish and leisi dance</span>
-        <div class="art-item-tags">
-          <span class="tag">2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="art-item" data-year="2026" data-title="they're just standing there" data-index="3">
-      <img src="art/licechuds.png">
-      <div class="art-item-meta">
-        <span class="art-item-title">they're just standing there</span>
-        <div class="art-item-tags">
-          <span class="tag">2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="art-item" data-year="2026" data-title="they've been caught" data-index="4">
-      <img src="art/licecaught.png">
-      <div class="art-item-meta">
-        <span class="art-item-title">they've been caught</span>
-        <div class="art-item-tags">
-          <span class="tag">2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="art-item" data-year="2026" data-title="they're squishing leisi..." data-index="5">
-      <img src="art/licesquish.png">
-      <div class="art-item-meta">
-        <span class="art-item-title">birthday art for lish! they're squishing leisi...</span>
-        <div class="art-item-tags">
-          <span class="tag">2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="art-item" data-year="2026" data-title="long bacon store" data-index="6">
-      <img src="art/licebacon.png">
-      <div class="art-item-meta">
-        <span class="art-item-title">long bacon store</span>
-        <div class="art-item-tags">
-          <span class="tag">2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="art-item" data-year="2026" data-title="peace sign :3" data-index="7">
-      <img src="art/leisiv.png">
-      <div class="art-item-meta">
-        <span class="art-item-title">peace sign :3</span>
-        <div class="art-item-tags">
-          <span class="tag">2026</span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="art-item" data-year="2026" data-title="pretty flexible, i guess" data-index="7">
-      <img src="art/leisiarch.png">
-      <div class="art-item-meta">
-        <span class="art-item-title">pretty flexible, i guess</span>
-        <div class="art-item-tags">
-          <span class="tag">2026</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose">✕</button>
-  <button class="lightbox-btn lightbox-prev" id="lightboxPrev">←</button>
-  <div class="lightbox-img-wrap">
-    <img src="" alt="" id="lightboxImg">
-  </div>
-  <div class="lightbox-meta">
-    <span class="lightbox-title" id="lightboxTitle"></span>
-    <span class="lightbox-year" id="lightboxYear"></span>
-    <span class="lightbox-counter" id="lightboxCounter"></span>
-  </div>
-  <button class="lightbox-btn lightbox-next" id="lightboxNext">→</button>
-</div>
-
-<footer class="footer-strip">
-  <a href="index.html"><< back home</a>
-  <span>hi i like to draw :3 hi</span>
-</footer>
-
-<script>
-const filterBtns = document.querySelectorAll('.filter-btn');
-const artItems = Array.from(document.querySelectorAll('.art-item'));
-let currentFilter = 'all';
-let visibleItems = artItems;
-let currentIndex = 0;
-
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentFilter = btn.dataset.filter;
-    artItems.forEach(item => {
-      const matchYear = item.dataset.year === currentFilter;
-      const matchTag = item.dataset.tags.split(' ').includes(currentFilter);
-      if (currentFilter === 'all' || matchYear || matchTag) {
-        delete item.dataset.hidden;
-      } else {
-        item.dataset.hidden = '';
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>art stuff like i guess bro</title>
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .art-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 20px 0 32px;
       }
-    });
-    visibleItems = artItems.filter(item => !item.hasAttribute('data-hidden'));
-  });
-});
 
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-const lightboxTitle = document.getElementById('lightboxTitle');
-const lightboxYear = document.getElementById('lightboxYear');
-const lightboxCounter = document.getElementById('lightboxCounter');
+      .filter-btn {
+        font-family: "Inconsolata", monospace;
+        font-size: 12px;
+        letter-spacing: 0.07em;
+        border: 1.5px solid var(--ink);
+        background: var(--paper);
+        color: var(--ink);
+        padding: 3px 10px;
+        cursor: pointer;
+        text-transform: lowercase;
+      }
 
-function openLightbox(index) {
-  currentIndex = index;
-  const item = visibleItems[currentIndex];
-  lightboxImg.src = item.querySelector('img').src;
-  lightboxImg.alt = item.dataset.title;
-  lightboxTitle.textContent = item.dataset.title;
-  lightboxYear.textContent = item.dataset.year;
-  lightboxCounter.textContent = (currentIndex + 1) + ' / ' + visibleItems.length;
-  lightbox.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
+      .filter-btn:hover {
+        background: var(--lime);
+      }
 
-function closeLightbox() {
-  lightbox.classList.remove('open');
-  document.body.style.overflow = '';
-}
+      .filter-btn.active {
+        background: var(--ink);
+        color: var(--paper);
+      }
 
-function prevImage() {
-  currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
-  openLightbox(currentIndex);
-}
+      .art-grid {
+        columns: 3;
+        column-gap: 12px;
+        margin: 0 0 60px;
+      }
 
-function nextImage() {
-  currentIndex = (currentIndex + 1) % visibleItems.length;
-  openLightbox(currentIndex);
-}
+      @media (max-width: 700px) {
+        .art-grid {
+          columns: 2;
+        }
+      }
 
-artItems.forEach(item => {
-  item.addEventListener('click', () => {
-    visibleItems = artItems.filter(i => !i.hasAttribute('data-hidden'));
-    const idx = visibleItems.indexOf(item);
-    openLightbox(idx);
-  });
-});
+      @media (max-width: 420px) {
+        .art-grid {
+          columns: 1;
+        }
+      }
 
-document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-document.getElementById('lightboxPrev').addEventListener('click', prevImage);
-document.getElementById('lightboxNext').addEventListener('click', nextImage);
+      .art-item {
+        break-inside: avoid;
+        margin-bottom: 12px;
+        border: 1.5px solid var(--ink);
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+      }
 
-lightbox.addEventListener('click', e => {
-  if (e.target === lightbox) closeLightbox();
-});
+      .art-item img {
+        display: block;
+        width: 100%;
+        transition: opacity 0.15s;
+      }
 
-document.addEventListener('keydown', e => {
-  if (!lightbox.classList.contains('open')) return;
-  if (e.key === 'ArrowLeft') prevImage();
-  if (e.key === 'ArrowRight') nextImage();
-  if (e.key === 'Escape') closeLightbox();
-});
-</script>
+      .art-item:hover img {
+        opacity: 0.85;
+      }
 
-</body>
+      .art-item-meta {
+        padding: 6px 8px 8px;
+        border-top: 1.5px solid var(--ink);
+        background: var(--paper);
+      }
+
+      .art-item-title {
+        font-family: "IM Fell English", serif;
+        font-size: 14px;
+        display: block;
+      }
+
+      .art-item-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-top: 4px;
+      }
+
+      .art-item[data-hidden] {
+        display: none;
+      }
+
+      .lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: rgba(17, 17, 17, 0.92);
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .lightbox.open {
+        display: flex;
+      }
+
+      .lightbox-img-wrap {
+        position: relative;
+        max-width: 90vw;
+        max-height: 82vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox-img-wrap img {
+        max-width: 90vw;
+        max-height: 82vh;
+        object-fit: contain;
+        border: 2px solid var(--paper);
+        display: block;
+      }
+
+      .lightbox-meta {
+        margin-top: 12px;
+        color: var(--paper);
+        font-family: "Inconsolata", monospace;
+        font-size: 13px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .lightbox-title {
+        font-family: "IM Fell English", serif;
+        font-size: 20px;
+        font-style: italic;
+      }
+
+      .lightbox-year {
+        color: var(--lime);
+        font-size: 12px;
+        letter-spacing: 0.1em;
+      }
+
+      .lightbox-btn {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: 2px solid var(--paper);
+        color: var(--paper);
+        font-family: "Inconsolata", monospace;
+        font-size: 20px;
+        padding: 8px 14px;
+        cursor: pointer;
+        z-index: 210;
+        line-height: 1;
+      }
+
+      .lightbox-btn:hover {
+        background: var(--lime);
+        color: var(--ink);
+        border-color: var(--lime);
+      }
+
+      .lightbox-prev {
+        left: 16px;
+      }
+      .lightbox-next {
+        right: 16px;
+      }
+
+      .lightbox-close {
+        position: fixed;
+        top: 16px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: var(--paper);
+        font-family: "Inconsolata", monospace;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 210;
+        line-height: 1;
+        padding: 4px 8px;
+      }
+
+      .lightbox-close:hover {
+        color: var(--lime);
+      }
+
+      .lightbox-counter {
+        font-size: 11px;
+        color: var(--muted);
+        letter-spacing: 0.1em;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="site-nav">
+      <a href="index.html" class="nav-title">lace.moe</a>
+      <a href="index.html">main</a>
+      <a href="about.html">about</a>
+      <a href="interests.html">interests</a>
+      <a href="rambling.html">rambling</a>
+      <a href="art.html" class="current">art</a>
+      <a href="links.html">links</a>
+    </nav>
+
+    <div class="page-body">
+      <header class="page-head">
+        <span class="stamp accent">file no. 005</span>
+        <h1>art</h1>
+        <p class="hand">drawings and things i made!! click to make big :3</p>
+      </header>
+
+      <div class="lime-bar"></div>
+
+      <div class="art-filters">
+        <button class="filter-btn active" data-filter="all">all</button>
+        <button class="filter-btn" data-filter="2026">2026</button>
+      </div>
+
+      <div class="art-grid" id="artGrid">
+        <div class="art-item" data-year="2026" data-title="lish and leisi maid art" data-index="0">
+          <img src="art/licemaids.png" />
+          <div class="art-item-meta">
+            <span class="art-item-title">lish and leisi maid art</span>
+            <div class="art-item-tags">
+              <span class="tag">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="art-item" data-year="2026" data-title="lish and leisi heart" data-index="1">
+          <img src="art/liceheart.png" />
+          <div class="art-item-meta">
+            <span class="art-item-title">lish and leisi heart</span>
+            <div class="art-item-tags">
+              <span class="tag">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="art-item" data-year="2026" data-title="lish stretch" data-index="1">
+          <img src="art/lishstretch.png" />
+          <div class="art-item-meta">
+            <span class="art-item-title">lish stretch</span>
+            <div class="art-item-tags">
+              <span class="tag">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="art-item" data-year="2026" data-title="lish tummy" data-index="1">
+          <img src="art/lishtummy.png" />
+          <div class="art-item-meta">
+            <span class="art-item-title">lish tummy</span>
+            <div class="art-item-tags">
+              <span class="tag">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="art-item" data-year="2026" data-title="lish and leisi dance" data-index="2">
+          <img src="art/licedance.png" />
+          <div class="art-item-meta">
+            <span class="art-item-title">lish and leisi dance</span>
+            <div class="art-item-tags">
+              <span class="tag">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="art-item" data-year="2026" data-title="they're just standing there" data-index="3">
+          <img src="art/licechuds.png" />
+          <div class="art-item-meta">
+            <span class="art-item-title">they're just standing there</span>
+            <div class="art-item-tags">
+              <span class="tag">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="art-item" data-year="2026" data-title="they've been caught" data-index="4">
+          <img src="art/licecaught.png" />
+          <div class="art-item-meta">
+            <span class="art-item-title">they've been caught</span>
+            <div class="art-item-tags">
+              <span class="tag">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="art-item" data-year="2026" data-title="they're squishing leisi..." data-index="5">
+          <img src="art/licesquish.png" />
+          <div class="art-item-meta">
+            <span class="art-item-title">birthday art for lish! they're squishing leisi...</span>
+            <div class="art-item-tags">
+              <span class="tag">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="art-item" data-year="2026" data-title="long bacon store" data-index="6">
+          <img src="art/licebacon.png" />
+          <div class="art-item-meta">
+            <span class="art-item-title">long bacon store</span>
+            <div class="art-item-tags">
+              <span class="tag">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="art-item" data-year="2026" data-title="peace sign :3" data-index="7">
+          <img src="art/leisiv.png" />
+          <div class="art-item-meta">
+            <span class="art-item-title">peace sign :3</span>
+            <div class="art-item-tags">
+              <span class="tag">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="art-item" data-year="2026" data-title="pretty flexible, i guess" data-index="7">
+          <img src="art/leisiarch.png" />
+          <div class="art-item-meta">
+            <span class="art-item-title">pretty flexible, i guess</span>
+            <div class="art-item-tags">
+              <span class="tag">2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightboxClose">✕</button>
+      <button class="lightbox-btn lightbox-prev" id="lightboxPrev">←</button>
+      <div class="lightbox-img-wrap">
+        <img src="" alt="" id="lightboxImg" />
+      </div>
+      <div class="lightbox-meta">
+        <span class="lightbox-title" id="lightboxTitle"></span>
+        <span class="lightbox-year" id="lightboxYear"></span>
+        <span class="lightbox-counter" id="lightboxCounter"></span>
+      </div>
+      <button class="lightbox-btn lightbox-next" id="lightboxNext">→</button>
+    </div>
+
+    <footer class="footer-strip">
+      <a href="index.html"><< back home</a>
+      <span>hi i like to draw :3 hi</span>
+    </footer>
+
+    <script>
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const artItems = Array.from(document.querySelectorAll(".art-item"));
+      let currentFilter = "all";
+      let visibleItems = artItems;
+      let currentIndex = 0;
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentFilter = btn.dataset.filter;
+          artItems.forEach((item) => {
+            const matchYear = item.dataset.year === currentFilter;
+            const matchTag = item.dataset.tags.split(" ").includes(currentFilter);
+            if (currentFilter === "all" || matchYear || matchTag) {
+              delete item.dataset.hidden;
+            } else {
+              item.dataset.hidden = "";
+            }
+          });
+          visibleItems = artItems.filter((item) => !item.hasAttribute("data-hidden"));
+        });
+      });
+
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
+      const lightboxTitle = document.getElementById("lightboxTitle");
+      const lightboxYear = document.getElementById("lightboxYear");
+      const lightboxCounter = document.getElementById("lightboxCounter");
+
+      function openLightbox(index) {
+        currentIndex = index;
+        const item = visibleItems[currentIndex];
+        lightboxImg.src = item.querySelector("img").src;
+        lightboxImg.alt = item.dataset.title;
+        lightboxTitle.textContent = item.dataset.title;
+        lightboxYear.textContent = item.dataset.year;
+        lightboxCounter.textContent = currentIndex + 1 + " / " + visibleItems.length;
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      function prevImage() {
+        currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+        openLightbox(currentIndex);
+      }
+
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % visibleItems.length;
+        openLightbox(currentIndex);
+      }
+
+      artItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          visibleItems = artItems.filter((i) => !i.hasAttribute("data-hidden"));
+          const idx = visibleItems.indexOf(item);
+          openLightbox(idx);
+        });
+      });
+
+      document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+      document.getElementById("lightboxPrev").addEventListener("click", prevImage);
+      document.getElementById("lightboxNext").addEventListener("click", nextImage);
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("open")) return;
+        if (e.key === "ArrowLeft") prevImage();
+        if (e.key === "ArrowRight") nextImage();
+        if (e.key === "Escape") closeLightbox();
+      });
+    </script>
+  </body>
 </html>
