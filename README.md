@@ -1,8 +1,8 @@
 # [lace.moe](https://lace.moe)
 
-my personal website. built with html, css, a little bit of js, and a bunch of trial and error.
+my personal website. built with html, css, a little bit of js, and a bunch of trial and error. 
 
-deployed via cloudflare workers. not really meant to be run locally but you can just open the html files in a browser if you want :3
+deployed via cloudflare workers! constantly updated :3
 
 ## pages
 - **main** — landing page
