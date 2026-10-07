@@ -1,223 +1,241 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>identity — lace.moe</title>
-<link rel="icon" href="assets/favicon.png">
-<link rel="stylesheet" href="style.css">
-<style>
-.spectrum-section { margin: 32px 0; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="lace.moe" />
+    <meta property="og:description" content="i like sliders i think" />
+    <meta property="og:image" content="https://lace.moe/assets/favicon.png" />
+    <meta property="og:url" content="https://lace.moe/identity.html" />
+    <meta property="og:type" content="website" />
+    <title>i like sliders i think</title>
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .spectrum-section {
+        margin: 32px 0;
+      }
 
-.spectrum-item {
-  margin-bottom: 36px;
-  border: 1.5px solid var(--ink);
-  padding: 16px 20px;
-}
+      .spectrum-item {
+        margin-bottom: 36px;
+        border: 1.5px solid var(--ink);
+        padding: 16px 20px;
+      }
 
-.spectrum-label {
-  font-family: 'IM Fell English', serif;
-  font-size: 18px;
-  margin-bottom: 12px;
-  display: block;
-}
+      .spectrum-label {
+        font-family: "IM Fell English", serif;
+        font-size: 18px;
+        margin-bottom: 12px;
+        display: block;
+      }
 
-.spectrum-track {
-  position: relative;
-  height: 24px;
-  margin: 16px 0 8px;
-}
+      .spectrum-track {
+        position: relative;
+        height: 24px;
+        margin: 16px 0 8px;
+      }
 
-.spectrum-bar {
-  position: absolute;
-  top: 10px;
-  left: 0; right: 0;
-  height: 4px;
-  background: #ddd;
-}
+      .spectrum-bar {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: #ddd;
+      }
 
-.spectrum-fill {
-  position: absolute;
-  top: 0; left: 0;
-  height: 100%;
-  background: var(--ink);
-}
+      .spectrum-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: var(--ink);
+      }
 
-.spectrum-dot {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 16px; height: 16px;
-  background: var(--lime);
-  border: 2px solid var(--ink);
-  border-radius: 50%;
-}
+      .spectrum-dot {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 16px;
+        height: 16px;
+        background: var(--lime);
+        border: 2px solid var(--ink);
+        border-radius: 50%;
+      }
 
-.spectrum-ends {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 4px;
-}
+      .spectrum-ends {
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
 
-.spectrum-note {
-  font-size: 13px;
-  color: var(--muted);
-  margin-top: 8px;
-  font-style: italic;
-}
+      .spectrum-note {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 8px;
+        font-style: italic;
+      }
 
-.note-box {
-  border-left: 3px solid var(--lime);
-  padding: 10px 16px;
-  margin: 16px 0;
-  font-size: 13px;
-  background: var(--faint);
-}
+      .note-box {
+        border-left: 3px solid var(--lime);
+        padding: 10px 16px;
+        margin: 16px 0;
+        font-size: 13px;
+        background: var(--faint);
+      }
 
-.inspired-by {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 40px;
-  border-top: 1px dashed #ccc;
-  padding-top: 16px;
-}
-</style>
-</head>
-<body>
+      .inspired-by {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 40px;
+        border-top: 1px dashed #ccc;
+        padding-top: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="site-nav">
+      <a href="index.html" class="nav-title">lace.moe</a>
+      <a href="index.html">main</a>
+      <a href="about.html">about</a>
+      <a href="interests.html">interests</a>
+      <a href="rambling.html">rambling</a>
+      <a href="music.html">music</a>
+      <a href="art.html">art</a>
+      <a href="links.html">links</a>
+    </nav>
 
-<nav class="site-nav">
-  <a href="index.html" class="nav-title">lace.moe</a>
-  <a href="index.html">main</a>
-  <a href="about.html">about</a>
-  <a href="interests.html">interests</a>
-  <a href="rambling.html">rambling</a>
-  <a href="music.html">music</a>
-  <a href="art.html">art</a>
-  <a href="links.html">links</a>
-</nav>
+    <div class="page-body">
+      <header class="page-head">
+        <span class="stamp">identity page</span>
+        <h1>identity</h1>
+        <p class="hand">a reference page for people who care</p>
+      </header>
 
-<div class="page-body">
+      <div class="lime-bar"></div>
 
-  <header class="page-head">
-    <span class="stamp">identity page</span>
-    <h1>identity</h1>
-    <p class="hand">a reference page for people who care</p>
-  </header>
+      <section class="scatter clearfix">
+        <p>
+          hi! this is a little page about my gender, attraction, and relationship stuff. i don't love labels that much
+          since i don't like feeling confined in a 'box' (as well as the fact that i'm still figuring most this out), so
+          take everything here as a "best current description" rather than a definitive definition of myself ^w^
+        </p>
 
-  <div class="lime-bar"></div>
+        <hr class="torn-line" />
+        <h2>gender</h2>
 
-  <section class="scatter clearfix">
-
-    <p>hi! this is a little page about my gender, attraction, and relationship stuff. i don't love labels 
-      that much since i don't like feeling confined in a 'box' (as well as the fact that i'm still figuring
-      most this out), so take everything here as a "best current description" rather than a definitive 
-      definition of myself ^w^</p>
-
-    <hr class="torn-line">
-    <h2>gender</h2>
-
-    <div class="spectrum-section">
-      <div class="spectrum-item">
-        <span class="spectrum-label">gender identity</span>
-        <div class="spectrum-ends"><span>girl</span><span>nonbinary</span><span>guy</span></div>
-        <div class="spectrum-track">
-          <div class="spectrum-bar"><div class="spectrum-fill" style="width:75%"></div></div>
-          <div class="spectrum-dot" style="left:75%"></div>
+        <div class="spectrum-section">
+          <div class="spectrum-item">
+            <span class="spectrum-label">gender identity</span>
+            <div class="spectrum-ends"><span>girl</span><span>nonbinary</span><span>guy</span></div>
+            <div class="spectrum-track">
+              <div class="spectrum-bar"><div class="spectrum-fill" style="width: 75%"></div></div>
+              <div class="spectrum-dot" style="left: 75%"></div>
+            </div>
+            <p class="spectrum-note">
+              masculine-leaning, but not fully a guy i think. i don't have a strong sense of gender and most days i'd
+              consider myself more agender than anything else, but sometimes i do feel more like a guy. perhaps some
+              type of genderfluid? i don't know. definitely not a girl though... and even when i don't really feel like
+              anything, i still prefer masculine pronouns and terms used on me, so defaulting to them either way is fine
+            </p>
+          </div>
+          <div class="spectrum-item">
+            <span class="spectrum-label">presentation</span>
+            <div class="spectrum-ends"><span>feminine</span><span>androgynous</span><span>masculine</span></div>
+            <div class="spectrum-track">
+              <div class="spectrum-bar"><div class="spectrum-fill" style="width: 50%"></div></div>
+              <div class="spectrum-dot" style="left: 50%"></div>
+            </div>
+            <p class="spectrum-note">
+              pretty much right in the middle. androgynous is the goal, even if circumstances don't always allow it. i'm
+              okay with wearing feminine clothing (skirts, bows, long socks... not really anything else though, i don't
+              know) but i would prefer to appear androgynous in general if possible...
+            </p>
+          </div>
         </div>
-        <p class="spectrum-note">masculine-leaning, but not fully a guy i think. i don't have a strong sense of 
-          gender and most days i'd consider myself more agender than anything else, but sometimes i do feel more 
-          like a guy. perhaps some type of genderfluid? i don't know. definitely not a girl though... and even 
-          when i don't really feel like anything, i still prefer masculine pronouns and terms used on me, 
-          so defaulting to them either way is fine</p>
-      </div>
-      <div class="spectrum-item">
-        <span class="spectrum-label">presentation</span>
-        <div class="spectrum-ends"><span>feminine</span><span>androgynous</span><span>masculine</span></div>
-        <div class="spectrum-track">
-          <div class="spectrum-bar"><div class="spectrum-fill" style="width:50%"></div></div>
-          <div class="spectrum-dot" style="left:50%"></div>
+
+        <hr class="torn-line" />
+        <h2>attraction</h2>
+
+        <div class="note-box">
+          i'm not super into labeling this one, but the closest terms i've found are <strong>achillean</strong> (men or
+          masculine-aligned individuals attracted to primarily to men and masculine-aligned individuals, though the
+          "primarily" is doing a lot of work for me here,,,) and probably
+          <strong>demiromantic & demisexual</strong> (for me specifically, i don't really experience physical attraction
+          unless there's already an established emotional connection. so like i don't really find anyone attractive
+          until i actually know and care about them). these labels feel close-ish but not perfect, which is pretty much
+          how all labels feel for me
         </div>
-        <p class="spectrum-note">pretty much right in the middle. androgynous is the goal, even if circumstances 
-          don't always allow it. i'm okay with wearing feminine clothing (skirts, bows, long socks... not really 
-          anything else though, i don't know) but i would prefer to appear androgynous in general if possible...</p>
-      </div>
+
+        <div class="spectrum-section">
+          <div class="spectrum-item">
+            <span class="spectrum-label">romantic attraction</span>
+            <div class="spectrum-ends"><span>only girls</span><span>multiple genders</span><span>only guys</span></div>
+            <div class="spectrum-track">
+              <div class="spectrum-bar"><div class="spectrum-fill" style="width: 75%"></div></div>
+              <div class="spectrum-dot" style="left: 75%"></div>
+            </div>
+            <p class="spectrum-note">
+              mostly towards guys and masculine people, but not exclusively i think. my partner is genderfluid and i'm
+              very much in love with them in all the ways they present so. maybe "mostly" is the key word here
+            </p>
+          </div>
+          <div class="spectrum-item">
+            <span class="spectrum-label">physical attraction</span>
+            <div class="spectrum-ends"><span>rarely</span><span>depends</span><span>often</span></div>
+            <div class="spectrum-track">
+              <div class="spectrum-bar"><div class="spectrum-fill" style="width: 50%"></div></div>
+              <div class="spectrum-dot" style="left: 50%"></div>
+            </div>
+            <p class="spectrum-note">
+              almost entirely dependent on like. emotional connection first. i won't find someone physically attractive
+              unless i already care about them emotionally. this is the probably demisexual & demiromantic part
+              mentioned previously
+            </p>
+          </div>
+        </div>
+
+        <hr class="torn-line" />
+        <h2>relationships</h2>
+
+        <div class="spectrum-section">
+          <div class="spectrum-item">
+            <span class="spectrum-label">relationship structure</span>
+            <div class="spectrum-ends"><span>polyamorous</span><span>open</span><span>monogamous</span></div>
+            <div class="spectrum-track">
+              <div class="spectrum-bar"><div class="spectrum-fill" style="width: 100%"></div></div>
+              <div class="spectrum-dot" style="left: 100%"></div>
+            </div>
+            <p class="spectrum-note">strictly monogamous!!! currently happy where i am. hi lish :3</p>
+          </div>
+          <div class="spectrum-item">
+            <span class="spectrum-label">closeness</span>
+            <div class="spectrum-ends"><span>prefer distance</span><span>moderate</span><span>very close</span></div>
+            <div class="spectrum-track">
+              <div class="spectrum-bar"><div class="spectrum-fill" style="width: 50%"></div></div>
+              <div class="spectrum-dot" style="left: 50%"></div>
+            </div>
+            <p class="spectrum-note">
+              this is not strictly about romantic relationships, but just in general! i wanted to include it just
+              because. i'm slow to warm up and struggle to connect with new people, but once i do care about someone i
+              care a lot about them! not to an insane degree but i am pretty attached to my friends
+            </p>
+          </div>
+        </div>
+
+        <p class="inspired-by">
+          very inspired by <a href="https://spectrum.avris.it/" target="_blank" rel="noopener">spectrum.avris.it</a>
+        </p>
+      </section>
     </div>
 
-    <hr class="torn-line">
-    <h2>attraction</h2>
-
-    <div class="note-box">
-      i'm not super into labeling this one, but the closest terms i've found are <strong>achillean</strong> (men or 
-      masculine-aligned individuals attracted to primarily to men and masculine-aligned individuals, though the "primarily" 
-      is doing a lot of work for me here,,,) and probably <strong>demiromantic & demisexual</strong> (for me specifically, 
-      i don't really experience physical attraction unless there's already an established emotional connection. so like i 
-      don't really find anyone attractive until i actually know and care about them). these labels feel close-ish but not
-       perfect, which is pretty much how all labels feel for me
-    </div>
-
-    <div class="spectrum-section">
-      <div class="spectrum-item">
-        <span class="spectrum-label">romantic attraction</span>
-        <div class="spectrum-ends"><span>only girls</span><span>multiple genders</span><span>only guys</span></div>
-        <div class="spectrum-track">
-          <div class="spectrum-bar"><div class="spectrum-fill" style="width:75%"></div></div>
-          <div class="spectrum-dot" style="left:75%"></div>
-        </div>
-        <p class="spectrum-note">mostly towards guys and masculine people, but not exclusively i think. my partner is 
-          genderfluid and i'm very much in love with them in all the ways they present so. maybe "mostly" is the key word here</p>
-      </div>
-      <div class="spectrum-item">
-        <span class="spectrum-label">physical attraction</span>
-        <div class="spectrum-ends"><span>rarely</span><span>sometimes</span><span>often</span></div>
-        <div class="spectrum-track">
-          <div class="spectrum-bar"><div class="spectrum-fill" style="width:20%"></div></div>
-          <div class="spectrum-dot" style="left:20%"></div>
-        </div>
-        <p class="spectrum-note">pretty low in general and almost entirely dependent on like. emotional connection first. 
-          i won't find someone physically attractive unless i already care about them emotionally. this is the probably 
-          demisexual & demiromantic part mentioned previously</p>
-      </div>
-    </div>
-
-    <hr class="torn-line">
-    <h2>relationships</h2>
-
-    <div class="spectrum-section">
-      <div class="spectrum-item">
-        <span class="spectrum-label">relationship structure</span>
-        <div class="spectrum-ends"><span>polyamorous</span><span>open</span><span>monogamous</span></div>
-        <div class="spectrum-track">
-          <div class="spectrum-bar"><div class="spectrum-fill" style="width:100%"></div></div>
-          <div class="spectrum-dot" style="left:100%"></div>
-        </div>
-        <p class="spectrum-note">strictly monogamous!!! currently happy where i am. hi lish :3</p>
-      </div>
-      <div class="spectrum-item">
-        <span class="spectrum-label">closeness</span>
-        <div class="spectrum-ends"><span>prefer distance</span><span>moderate</span><span>very close</span></div>
-        <div class="spectrum-track">
-          <div class="spectrum-bar"><div class="spectrum-fill" style="width:30%"></div></div>
-          <div class="spectrum-dot" style="left:30%"></div>
-        </div>
-        <p class="spectrum-note">this is not strictly about romantic relationships, but just in general! i wanted to include it 
-          just because. i'm slow to warm up and struggle to connect with new people, but once i do care about someone i care a 
-          lot about them! not to an insane degree but i am pretty attached to my friends</p>
-      </div>
-    </div>
-
-    <p class="inspired-by">very inspired by <a href="https://spectrum.avris.it/" target="_blank" rel="noopener">spectrum.avris.it</a></p>
-
-  </section>
-</div>
-
-<footer class="footer-strip">
-  <a href="index.html">&lt;&lt; back home</a>
-  <span>still figuring it out, probably always will be</span>
-</footer>
-
-</body>
+    <footer class="footer-strip">
+      <a href="index.html">&lt;&lt; back home</a>
+      <span>still figuring it out, probably always will be</span>
+    </footer>
+  </body>
 </html>
