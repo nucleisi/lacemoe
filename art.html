@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -41,23 +41,18 @@
       }
 
       .art-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
         gap: 12px;
-        align-items: start;
+        align-items: flex-start;
         margin: 0 0 60px;
       }
 
-      @media (max-width: 700px) {
-        .art-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (max-width: 420px) {
-        .art-grid {
-          grid-template-columns: 1fr;
-        }
+      .art-col {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
       }
 
       .art-item {
@@ -382,6 +377,47 @@
       let visibleItems = artItems;
       let currentIndex = 0;
 
+      const grid = document.getElementById("artGrid");
+
+      function getColumnCount() {
+        const w = window.innerWidth;
+        if (w <= 420) return 1;
+        if (w <= 700) return 2;
+        return 3;
+      }
+
+      function layoutGrid() {
+        const n = getColumnCount();
+        grid.innerHTML = "";
+        const cols = [];
+        for (let i = 0; i < n; i++) {
+          const col = document.createElement("div");
+          col.className = "art-col";
+          grid.appendChild(col);
+          cols.push(col);
+        }
+        artItems.forEach((item) => {
+          if (item.hasAttribute("data-hidden")) {
+            cols[0].appendChild(item);
+            return;
+          }
+          const shortest = cols.reduce((a, b) => (b.offsetHeight < a.offsetHeight ? b : a));
+          shortest.appendChild(item);
+        });
+      }
+
+      let lastCols = getColumnCount();
+      window.addEventListener("resize", () => {
+        const c = getColumnCount();
+        if (c !== lastCols) {
+          lastCols = c;
+          layoutGrid();
+        }
+      });
+
+      layoutGrid();
+      window.addEventListener("load", layoutGrid);
+
       filterBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
           filterBtns.forEach((b) => b.classList.remove("active"));
@@ -396,6 +432,7 @@
             }
           });
           visibleItems = artItems.filter((item) => !item.hasAttribute("data-hidden"));
+          layoutGrid();
         });
       });
 
