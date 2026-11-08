@@ -41,26 +41,26 @@
       }
 
       .art-grid {
-        columns: 3;
-        column-gap: 12px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        align-items: start;
         margin: 0 0 60px;
       }
 
       @media (max-width: 700px) {
         .art-grid {
-          columns: 2;
+          grid-template-columns: repeat(2, 1fr);
         }
       }
 
       @media (max-width: 420px) {
         .art-grid {
-          columns: 1;
+          grid-template-columns: 1fr;
         }
       }
 
       .art-item {
-        break-inside: avoid;
-        margin-bottom: 12px;
         border: 1.5px solid var(--ink);
         cursor: pointer;
         overflow: hidden;
@@ -277,7 +277,12 @@
           </div>
         </div>
 
-        <div class="art-item" data-year="2026" data-title="birthday art for lish! they're squishing leisi..." data-index="7">
+        <div
+          class="art-item"
+          data-year="2026"
+          data-title="birthday art for lish! they're squishing leisi..."
+          data-index="7"
+        >
           <img src="art/licesquish.png" alt="they're squishing leisi..." />
           <div class="art-item-meta">
             <span class="art-item-title">birthday art for lish! they're squishing leisi...</span>
@@ -341,7 +346,7 @@
           </div>
         </div>
 
-      <div class="art-item" data-year="2026" data-title="protective lys" data-index="15">
+        <div class="art-item" data-year="2026" data-title="protective lys" data-index="15">
           <img src="art/liceprotect.png" alt="protective lys" />
           <div class="art-item-meta">
             <span class="art-item-title">protective lys</span>
